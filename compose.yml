@@ -1,0 +1,11 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      DOMAIN: "http://localhost:8880"
+    volumes:
+      - ./vw-data/:/data/
+    ports:
+      - 8880:80
