@@ -79,3 +79,15 @@ all major cloud storage providers with a free tier
 standalone first with local vault, wifi then cellular
 
 *Please append new questions or decisions in this section as the project evolves.*
+
+### Progress 2025-04-26
+
+- Milestone 0 finished (Gradle skeleton + Rust FFI crate).
+- Milestone 1 underway:
+  - M1-1: cargo-ndk task defined and documented in `android/build.gradle`.
+  - M1-2: Auto `cargoBuild` hooked into preBuild.
+  - M1-3: Service logging added (completed).
+  - M1-4: Instrumented test added (completed).
+- Milestone 1 complete; next milestone will focus on HTTPS setup & idle shutdown.
+
+*Questions:* none blocking.

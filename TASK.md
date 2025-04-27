@@ -9,6 +9,13 @@
 
 *(empty)*
 
+## Upcoming – Milestone 1 (Rust/NDK integration)
+
+- [ ] M1-1: Add `cargo-ndk` toolchain config & document build command (arm64-v8a) — 2025-04-26
+- [ ] M1-2: Create Gradle task `cargoBuild` to compile JNI lib and copy into `app/src/main/jniLibs` — 2025-04-26
+- [x] M1-3: Extend `ServerService` to log success/failure of JNI `startServer` — 2025-04-26
+- [x] M1-4: Instrumented device test that hits `https://127.0.0.1:8087/alive` endpoint — 2025-04-26
+
 ## Completed
 
-M0-1, M0-2
+M0-1, M0-2, M1-3, M1-4
