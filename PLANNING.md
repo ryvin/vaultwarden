@@ -96,4 +96,5 @@ standalone first with local vault, wifi then cellular
 
 - Milestone 2 started:
   - M2-1: Self-signed cert generation added to Rust FFI (completed).
-  - Next: M2-2 configure Rocket TLS.
+  - M2-2: Configured Rocket TLS via env vars in FFI (completed).
+  - Next: M2-3 implement idle shutdown timer.

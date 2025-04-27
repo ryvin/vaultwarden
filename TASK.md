@@ -12,7 +12,7 @@
 ## Upcoming – Milestone 2 (Service Integration & HTTPS)
 
 - [x] M2-1: Generate self-signed cert/key in Rust FFI on first start — 2025-04-26
-- [ ] M2-2: Configure Rocket TLS in Rust FFI using generated cert/key — 2025-04-26
+- [x] M2-2: Configure Rocket TLS in Rust FFI using generated cert/key — 2025-04-26
 - [ ] M2-3: Implement `ServerService` idle shutdown timer — 2025-04-26
 - [ ] M2-4: Update instrumented test client to trust self-signed cert — 2025-04-26
 
@@ -25,4 +25,4 @@
 
 ## Completed
 
-M0-1, M0-2, M1-3, M1-4, M2-1
+M0-1, M0-2, M1-3, M1-4, M2-1, M2-2
