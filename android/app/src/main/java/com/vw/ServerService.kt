@@ -10,7 +10,8 @@ import android.os.IBinder
 import android.util.Log
 
 class ServerService : Service() {
-    private external fun startServer(port: Int)
+    private const val TAG = "VaultwardenService"
+    private external fun startServer(dataDir: String, port: Int)
     private external fun stopServer()
 
     companion object {
@@ -28,13 +29,17 @@ class ServerService : Service() {
         startForeground(1, notification)
         // Start embedded server and log outcome
         try {
-            startServer(8087)
-            Log.i("VaultwardenService", "Vaultwarden server started on port 8087")
+            // Get app-specific directory for data (certs, db, etc.)
+            val dataDir = filesDir.absolutePath
+            Log.d(TAG, "Using data directory: $dataDir")
+
+            startServer(dataDir, 8087)
+            Log.i(TAG, "Vaultwarden server started on port 8087")
         } catch (e: UnsatisfiedLinkError) {
-            Log.e("VaultwardenService", "Failed to load native library", e)
+            Log.e(TAG, "Failed to load native library", e)
             stopSelf()
         } catch (e: Throwable) {
-            Log.e("VaultwardenService", "Failed to start server", e)
+            Log.e(TAG, "Failed to start server", e)
             stopSelf()
         }
     }

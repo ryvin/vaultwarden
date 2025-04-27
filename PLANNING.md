@@ -91,3 +91,9 @@ standalone first with local vault, wifi then cellular
 - Milestone 1 complete; next milestone will focus on HTTPS setup & idle shutdown.
 
 *Questions:* none blocking.
+
+### Progress 2025-04-26 (cont.)
+
+- Milestone 2 started:
+  - M2-1: Self-signed cert generation added to Rust FFI (completed).
+  - Next: M2-2 configure Rocket TLS.
