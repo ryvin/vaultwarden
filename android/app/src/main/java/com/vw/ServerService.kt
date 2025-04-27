@@ -90,6 +90,15 @@ class ServerService : Service() {
         return isRunning
     }
 
+    /** Method for clients to reset the idle shutdown timer. */
+    fun resetIdleTimer() {
+        if (isRunning) { // Only reset if the server is actually running
+            idleHandler.removeCallbacks(shutdownRunnable)
+            idleHandler.postDelayed(shutdownRunnable, IDLE_TIMEOUT_MS)
+            Log.d(TAG, "Idle timer reset by client interaction.")
+        }
+    }
+
     /** Method for clients to get the server port. */
     fun getServerPort(): Int {
         return serverPort
