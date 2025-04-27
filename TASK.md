@@ -9,6 +9,13 @@
 
 *(empty)*
 
+## Upcoming – Milestone 2 (Service Integration & HTTPS)
+
+- [ ] M2-1: Generate self-signed cert/key in Rust FFI on first start — 2025-04-26
+- [ ] M2-2: Configure Rocket TLS in Rust FFI using generated cert/key — 2025-04-26
+- [ ] M2-3: Implement `ServerService` idle shutdown timer — 2025-04-26
+- [ ] M2-4: Update instrumented test client to trust self-signed cert — 2025-04-26
+
 ## Upcoming – Milestone 1 (Rust/NDK integration)
 
 - [ ] M1-1: Add `cargo-ndk` toolchain config & document build command (arm64-v8a) — 2025-04-26
