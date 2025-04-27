@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
 import android.content.Intent
+import android.os.Binder
 import android.os.Build
 import android.os.Handler
 import android.os.IBinder
@@ -26,6 +27,10 @@ class ServerService : Service() {
     private val shutdownRunnable = Runnable { Log.i(TAG, "Stopping service due to idle timeout"); stopSelf() }
     private val IDLE_TIMEOUT_MS = 15 * 60 * 1000L // 15 minutes
 
+    private val binder = LocalBinder()
+    private var isRunning = false
+    private var serverPort: Int = 8087 // Default/initial port
+
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
@@ -39,13 +44,18 @@ class ServerService : Service() {
             val dataDir = filesDir.absolutePath
             Log.d(TAG, "Using data directory: $dataDir")
 
-            startServer(dataDir, 8087)
-            Log.i(TAG, "Vaultwarden server started on port 8087")
+            val portToUse = 8087 // Could make this configurable later
+            serverPort = portToUse // Store the actual port used
+            startServer(dataDir, portToUse)
+            Log.i(TAG, "Vaultwarden server started on port $portToUse")
+            isRunning = true
         } catch (e: UnsatisfiedLinkError) {
             Log.e(TAG, "Failed to load native library", e)
+            isRunning = false
             stopSelf()
         } catch (e: Throwable) {
             Log.e(TAG, "Failed to start server", e)
+            isRunning = false
             stopSelf()
         }
     }
@@ -60,12 +70,30 @@ class ServerService : Service() {
 
     override fun onDestroy() {
         Log.d(TAG, "Service destroyed, cancelling idle timer and stopping server.")
+        isRunning = false
         idleHandler.removeCallbacks(shutdownRunnable) // Ensure timer is cancelled
         stopServer()
         super.onDestroy()
     }
 
-    override fun onBind(intent: Intent?): IBinder? = null
+    override fun onBind(intent: Intent?): IBinder = binder
+
+    /** Binder for clients to interact with the service. */
+    inner class LocalBinder : Binder() {
+        fun getService(): ServerService = this@ServerService
+    }
+
+    /** Method for clients to query server status. */
+    fun isServerRunning(): Boolean {
+        // TODO: Check if the underlying Rust thread is actually alive?
+        // For now, rely on the flag set during start/stop attempts.
+        return isRunning
+    }
+
+    /** Method for clients to get the server port. */
+    fun getServerPort(): Int {
+        return serverPort
+    }
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
