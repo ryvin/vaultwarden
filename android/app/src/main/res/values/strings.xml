@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Vaultwarden Embedded</string>
+    <string name="server_status_stopped">Server Status: Stopped</string>
+    <string name="server_status_running">Server Status: Running</string>
+    <string name="server_url_not_running">URL: (Not running)</string>
+    <string name="server_url_prefix">URL: </string>
+    <string name="start_server">Start Server</string>
+    <string name="stop_server">Stop Server</string>
+</resources>

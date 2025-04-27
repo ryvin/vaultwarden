@@ -13,8 +13,15 @@
 
 - [x] M2-1: Generate self-signed cert/key in Rust FFI on first start — 2025-04-26
 - [x] M2-2: Configure Rocket TLS in Rust FFI using generated cert/key — 2025-04-26
-- [ ] M2-3: Implement `ServerService` idle shutdown timer — 2025-04-26
-- [ ] M2-4: Update instrumented test client to trust self-signed cert — 2025-04-26
+- [x] M2-3: Implement `ServerService` idle shutdown timer — 2025-04-26
+- [x] M2-4: Update instrumented test client to trust self-signed cert — 2025-04-26
+
+## Upcoming – Milestone 3 (Basic UI & Control)
+
+- [ ] M3-1: Create basic MainActivity UI (Start/Stop buttons) — 2025-04-26
+- [ ] M3-2: Implement MainActivity logic to bind/display ServerService status — 2025-04-26
+- [ ] M3-3: Display server URL (https://127.0.0.1:PORT) in UI when running — 2025-04-26
+- [ ] M3-4: Refine ServerService for status query/idle timer reset from UI — 2025-04-26
 
 ## Upcoming – Milestone 1 (Rust/NDK integration)
 
@@ -25,4 +32,4 @@
 
 ## Completed
 
-M0-1, M0-2, M1-3, M1-4, M2-1, M2-2
+M0-1, M0-2, M1-3, M1-4, M2-1, M2-2, M2-3, M2-4
